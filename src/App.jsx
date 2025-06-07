@@ -11,13 +11,13 @@ import ThreeBackground from './components/ThreeBackground';
 
 function App() {
   return (
-    <div className="">
+    <div className="relative">
+      <ThreeBackground /> {/* Always in the back */}
       <div className="relative z-10">
         <Navbar />
         <Hero />
         <About />
         <Projects />
-        <ThreeBackground />
         <Skills />
         <Experience />
         <Contact />

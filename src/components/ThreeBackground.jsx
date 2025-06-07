@@ -1,12 +1,9 @@
-// src/components/ThreeBackground.jsx
-import React, { useRef } from 'react';
-import { Canvas, useFrame, useLoader } from '@react-three/fiber';
-import { Stars, OrbitControls, Html } from '@react-three/drei';
+import React, { useRef, useMemo } from 'react';
+import { Canvas, useFrame, extend } from '@react-three/fiber';
+import { OrbitControls, shaderMaterial, useTexture, Stars } from '@react-three/drei';
 import * as THREE from 'three';
-import { TextureLoader, AdditiveBlending } from 'three';
-import { EffectComposer, Bloom } from '@react-three/postprocessing';
 
-// Textures
+// 🌌 Textures (update paths as needed)
 import mercuryTex from '../assets/textures/mercury.jpg';
 import venusTex from '../assets/textures/venus.jpg';
 import earthTex from '../assets/textures/earth.jpg';
@@ -18,6 +15,33 @@ import neptuneTex from '../assets/textures/neptune.jpg';
 import saturnRingTex from '../assets/textures/saturn_ring.png';
 import sunTex from '../assets/textures/sun.jpg';
 import starfieldTex from '../assets/textures/starfield.jpg';
+
+// 🌞 Solar Flare Shader (inline GLSL strings)
+const SolarFlareMaterial = shaderMaterial(
+  { time: 0, color: new THREE.Color('#FDB813') },
+  /* glsl */ `
+    varying vec2 vUv;
+    void main() {
+      vUv = uv;
+      vec3 pos = position;
+      gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.0);
+    }
+  `,
+  /* glsl */ `
+    uniform float time;
+    uniform vec3 color;
+    varying vec2 vUv;
+
+    void main() {
+      float strength = sin(10.0 * vUv.x + time) * 0.05 + 0.05;
+      float radial = distance(vUv, vec2(0.5));
+      float flare = smoothstep(0.4, 0.0, radial);
+      gl_FragColor = vec4(color, flare * strength);
+    }
+  `
+);
+
+extend({ SolarFlareMaterial });
 
 const textures = {
   Mercury: mercuryTex,
@@ -33,7 +57,7 @@ const textures = {
 const Planet = ({ name, size, distance, speed }) => {
   const planetRef = useRef();
   const angleRef = useRef(Math.random() * Math.PI * 2);
-  const texture = useLoader(TextureLoader, textures[name]);
+  const texture = useTexture(textures[name]);
 
   useFrame(() => {
     angleRef.current += speed;
@@ -52,26 +76,27 @@ const Planet = ({ name, size, distance, speed }) => {
 
 const OrbitRing = ({ radius }) => {
   const segments = 128;
-  const ringGeometry = new THREE.BufferGeometry();
-  const points = [];
+  const points = useMemo(() => {
+    const pts = [];
+    for (let i = 0; i <= segments; i++) {
+      const angle = (i / segments) * Math.PI * 2;
+      pts.push(new THREE.Vector3(Math.cos(angle) * radius, 0, Math.sin(angle) * radius));
+    }
+    return pts;
+  }, [radius]);
 
-  for (let i = 0; i <= segments; i++) {
-    const angle = (i / segments) * Math.PI * 2;
-    points.push(new THREE.Vector3(Math.cos(angle) * radius, 0, Math.sin(angle) * radius));
-  }
-
-  ringGeometry.setFromPoints(points);
+  const ringGeometry = useMemo(() => new THREE.BufferGeometry().setFromPoints(points), [points]);
 
   return (
     <line geometry={ringGeometry}>
-      <lineBasicMaterial color="#444" />
+      <lineBasicMaterial attach="material" color="#555" />
     </line>
   );
 };
 
 const SaturnRing = ({ distance }) => {
   const ringRef = useRef();
-  const texture = useLoader(TextureLoader, saturnRingTex);
+  const texture = useTexture(saturnRingTex);
 
   return (
     <mesh ref={ringRef} rotation={[-Math.PI / 2, 0, 0]} position={[distance, 0, 0]}>
@@ -82,40 +107,43 @@ const SaturnRing = ({ distance }) => {
 };
 
 const Sun = () => {
-  const sunTexture = useLoader(TextureLoader, sunTex);
+  const texture = useTexture(sunTex);
+  const flareRef = useRef();
+
+  useFrame(({ clock }) => {
+    if (flareRef.current) {
+      flareRef.current.material.uniforms.time.value = clock.elapsedTime;
+    }
+  });
 
   return (
     <>
-      {/* Core of the Sun */}
       <mesh>
         <sphereGeometry args={[1.8, 64, 64]} />
-        <meshStandardMaterial map={sunTexture} emissive="#FDB813" emissiveIntensity={3} />
+        <meshStandardMaterial emissive="#FDB813" emissiveIntensity={2} map={texture} />
       </mesh>
 
-      {/* Glowing corona using additive blending */}
+      <mesh ref={flareRef}>
+        <sphereGeometry args={[2.2, 64, 64]} />
+        <solarFlareMaterial transparent />
+      </mesh>
+
       <mesh>
         <sphereGeometry args={[2.5, 64, 64]} />
-        <meshBasicMaterial
-          color="#FDB813"
-          transparent
-          opacity={0.4}
-          blending={AdditiveBlending}
-          side={THREE.BackSide}
-        />
+        <meshBasicMaterial color="#FDB813" transparent opacity={0.2} side={THREE.BackSide} />
       </mesh>
 
-      {/* Point Light from the Sun */}
-      <pointLight color="#FDB813" intensity={3.5} distance={50} />
+      <pointLight args={["#FDB813", 3, 100]} />
     </>
   );
 };
 
 const GalaxyBackground = () => {
-  const galaxy = useLoader(TextureLoader, starfieldTex);
+  const texture = useTexture(starfieldTex);
   return (
     <mesh>
       <sphereGeometry args={[300, 64, 64]} />
-      <meshBasicMaterial map={galaxy} side={THREE.BackSide} />
+      <meshBasicMaterial map={texture} side={THREE.BackSide} />
     </mesh>
   );
 };
@@ -148,20 +176,24 @@ const SolarSystem = () => {
 
 const ThreeBackground = () => {
   return (
-    <div className="absolute top-0 left-0 w-full h-full -z-10">
-      <Canvas camera={{ position: [0, 50, 100], fov: 50 }}>
-        <ambientLight intensity={0.3} />
-        <Stars radius={200} depth={60} count={5000} factor={5} fade />
-        <GalaxyBackground />
-        <SolarSystem />
-        <OrbitControls enableZoom={false} autoRotate autoRotateSpeed={0.15} />
-        {/* 🎇 Bloom Effect for glowing bodies */}
-        <EffectComposer>
-          <Bloom luminanceThreshold={0.2} luminanceSmoothing={0.9} intensity={1.5} />
-        </EffectComposer>
-      </Canvas>
-    </div>
+    <Canvas
+      camera={{ position: [0, 15, 40], fov: 45 }}
+      gl={{ antialias: true, toneMapping: THREE.ACESFilmicToneMapping }}
+      shadows
+    >
+      <ambientLight intensity={0.3} />
+      <Stars radius={300} depth={60} count={5000} factor={5} fade />
+      <GalaxyBackground />
+      <SolarSystem />
+      <OrbitControls 
+        enableZoom={false} 
+        enablePan={false} 
+        autoRotate 
+        autoRotateSpeed={0.2}
+        dampingFactor={0.05}
+      />
+    </Canvas>
   );
 };
 
-export default ThreeBackground;
+export default ThreeBackground;   
