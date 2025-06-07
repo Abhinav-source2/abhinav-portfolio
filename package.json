@@ -1,0 +1,33 @@
+{
+  "name": "abhinav_portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@react-three/drei": "^10.1.2",
+    "@react-three/fiber": "^9.1.2",
+    "@react-three/postprocessing": "^3.0.4",
+    "abhinav_portfolio": "file:../AJ_PORTFOLIO_full",
+    "babel-plugin-glsl": "^1.0.0",
+    "framer-motion": "^11.0.17",
+    "gl-matrix": "^3.4.3",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "react-icons": "^4.12.0",
+    "react-scroll": "^1.8.9",
+    "regl": "^2.1.1",
+    "three": "^0.177.0",
+    "vite-plugin-glsl": "^1.4.2"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.1.0",
+    "autoprefixer": "^10.4.16",
+    "postcss": "^8.4.31",
+    "tailwindcss": "^3.4.1",
+    "vite": "^5.2.0"
+  }
+}
