@@ -149,7 +149,7 @@ const SolarSystem = () => {
 const ThreeBackground = () => {
   return (
     <div className="absolute top-0 left-0 w-full h-full -z-10">
-      <Canvas camera={{ position: [0, 20, 40], fov: 45 }}>
+      <Canvas camera={{ position: [0, 50, 100], fov: 50 }}>
         <ambientLight intensity={0.3} />
         <Stars radius={200} depth={60} count={5000} factor={5} fade />
         <GalaxyBackground />
