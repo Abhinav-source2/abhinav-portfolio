@@ -7,6 +7,14 @@ body {
   scroll-behavior: smooth;
   background-color: #000;
 }
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+.animate-marquee {
+  animation: marquee 20s linear infinite;
+}
+
 .input {
   @apply w-full p-3 bg-black/60 rounded-xl border border-gray-600 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-cyan-500;
 }
