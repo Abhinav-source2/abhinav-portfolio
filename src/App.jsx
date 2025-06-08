@@ -8,11 +8,13 @@ import Skills from './components/Skills';
 import Experience from './components/Experience';
 import ThreeBackground from './components/ThreeBackground';
 
-
 function App() {
   return (
-    <div className="relative">
-      <ThreeBackground /> {/* Always in the back */}
+    <div className="relative w-full h-full">
+      {/* ✅ Always visible 3D background */}
+      <ThreeBackground />
+
+      {/* 🔝 Foreground content above background */}
       <div className="relative z-10">
         <Navbar />
         <Hero />
