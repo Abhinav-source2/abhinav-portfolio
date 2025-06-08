@@ -196,4 +196,4 @@ const ThreeBackground = () => {
   );
 };
 
-export default ThreeBackground;   
+export default ThreeBackground;  
