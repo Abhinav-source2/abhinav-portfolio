@@ -1,33 +1,45 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { FaBriefcase } from "react-icons/fa";
+import { MdWork } from "react-icons/md";
 
 const Experience = () => {
   return (
     <section id="experience" className="py-24 px-6 text-white">
-      <div className="max-w-4xl mx-auto">
-        <motion.h2 
-          initial={{ opacity: 0, y: -40 }} 
-          whileInView={{ opacity: 1, y: 0 }} 
-          transition={{ duration: 0.6 }} 
-          className="text-4xl font-bold mb-10 text-center"
+      <div className="max-w-5xl mx-auto">
+        <motion.h2
+          initial={{ opacity: 0, y: -40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-4xl font-bold mb-12 text-center"
         >
           <FaBriefcase className="inline mr-2 text-purple-400" /> Experience
         </motion.h2>
 
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="bg-white/5 p-8 rounded-2xl backdrop-blur-md border border-white/10 shadow-lg hover:shadow-purple-600/40 transition-shadow"
+          transition={{ duration: 0.7 }}
+          className="bg-black/40 p-6 md:p-8 rounded-2xl border border-white/10 backdrop-blur-md shadow-xl hover:shadow-purple-700/30 transition"
         >
-          <h3 className="text-2xl font-semibold mb-2 text-purple-300">Business Analyst Intern – FUDR</h3>
-          <p className="text-sm text-gray-400 mb-4">May 2024 – July 2024</p>
-          <ul className="list-disc list-inside text-gray-300 space-y-2">
-            <li>Researched and analyzed client engagement strategies, resulting in a 20% boost in customer reach.</li>
-            <li>Built a structured dataset of 600+ brands and 500 clients using Python-based web scraping tools.</li>
-            <li>Created an interactive, data-driven dashboard for tracking client metrics and business performance.</li>
-            <li>Applied web development and automation skills to build internal tools for improved operational efficiency.</li>
+          <div className="flex items-center gap-4 mb-4">
+            <div className="bg-purple-500 text-white p-3 rounded-full">
+              <MdWork className="text-xl" />
+            </div>
+            <div>
+              <h3 className="text-xl md:text-2xl font-semibold text-purple-300">
+                Business Analyst Intern – FUDR
+              </h3>
+              <p className="text-sm text-gray-400">May 2024 – July 2024</p>
+            </div>
+          </div>
+
+          <ul className="list-disc list-inside text-gray-300 space-y-3 text-sm md:text-base">
+            <li><strong>Increased customer reach by 20%</strong> through data-backed engagement strategies and user research.</li>
+            <li>Scraped and structured a dataset of <strong>600+ brands and 500 clients</strong> for internal analysis.</li>
+            <li>Developed a custom CRM app to centralize client interactions, boosting response speed and retention.</li>
+            <li>Designed a live <strong>data-driven dashboard</strong> using automation pipelines to visualize KPIs and insights.</li>
+            <li>Collaborated cross-functionally with devs and ops to ship features rapidly in Agile sprints.</li>
           </ul>
         </motion.div>
       </div>
