@@ -29,6 +29,7 @@ body {
   white-space: nowrap;
 }
 
+
 /* Text wrap on small screens */
 .text-wrap {
   word-wrap: break-word;
