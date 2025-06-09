@@ -30,10 +30,12 @@ const projects = [
 
 const Projects = () => {
   return (
-    <section id="projects" className="py-24 px-6 bg-transparent text-white">
+    <section id="projects" className="py-20 px-4 sm:px-6 md:px-8 bg-transparent text-white">
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-4xl font-bold mb-12 text-center">Projects</h2>
-        <div className="grid md:grid-cols-3 gap-8">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-12 text-center">
+          Projects
+        </h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, index) => (
             <div
               key={index}
@@ -43,12 +45,12 @@ const Projects = () => {
               <img
                 src={project.image}
                 alt={project.title}
-                className="rounded-lg mb-3 w-full h-40 object-cover border border-white/10"
+                className="rounded-lg mb-3 w-full h-40 object-contain border border-white/10"
               />
-              <h3 className="text-lg font-semibold text-center text-purple-300">
+              <h3 className="text-lg font-semibold text-center text-purple-300 break-words">
                 {project.title}
               </h3>
-              <p className="text-sm text-gray-300 mt-2 text-center">
+              <p className="text-sm text-gray-300 mt-2 text-center break-words">
                 {project.description}
               </p>
               <div className="flex flex-wrap justify-center gap-2 mt-3">
