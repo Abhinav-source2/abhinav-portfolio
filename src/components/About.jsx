@@ -2,6 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { FaBrain, FaGlobeAsia, FaRobot, FaChartLine } from "react-icons/fa";
 import { GiAchievement } from "react-icons/gi";
+import ProfileImage from "/src/assets/abhinav_avatar.jpg"; // Add your profile image to src/assets
 
 const stats = [
   {
@@ -41,15 +42,30 @@ const About = () => {
   return (
     <section id="about" className="min-h-screen px-6 py-24 bg-transparent text-white relative">
       <div className="max-w-6xl mx-auto">
-        {/* Terminal-style intro */}
+        {/* Profile section */}
         <motion.div
           initial={{ opacity: 0, y: -30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
-          className="mb-12 text-mono text-green-400 text-lg"
+          className="flex flex-col md:flex-row items-center justify-center gap-8 mb-16"
         >
-          <p>&gt; Initializing Abhinav Protocol...</p>
-          <p>&gt; Loading Personality Stats...</p>
+          <img
+            src={ProfileImage}
+            alt="Abhinav Jajoo Avatar"
+            className="w-40 h-40 rounded-full border-4 border-purple-500 shadow-lg"
+          />
+
+          <div className="text-center md:text-left">
+            <h2 className="text-3xl font-bold text-purple-400 mb-3">About Me</h2>
+            <p className="text-gray-300 text-sm md:text-base max-w-xl">
+              I’m Abhinav Jajoo — a curious coder, business analyst, and AI tinkerer passionate about building
+              data-driven solutions that solve real-world problems. I thrive at the intersection of technology,
+              strategy, and storytelling.
+              <br /><br />
+              Outside code, I binge on geopolitics, debate market trends, and occasionally get obsessed with
+              building something weird in Python.
+            </p>
+          </div>
         </motion.div>
 
         {/* Personality Cards */}
@@ -105,7 +121,7 @@ const About = () => {
           whileInView={{ opacity: 1 }}
           transition={{ delay: 1.2 }}
         >
-          More to come... Stay tuned something is Cooking! 🚀
+          More to come... Stay tuned, something is cooking! 🚀
         </motion.div>
       </div>
     </section>
