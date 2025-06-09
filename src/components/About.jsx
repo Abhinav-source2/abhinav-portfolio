@@ -1,3 +1,4 @@
+// src/components/About.jsx
 import React from "react";
 import { motion } from "framer-motion";
 import { FaBrain, FaGlobeAsia, FaRobot, FaChartLine } from "react-icons/fa";
@@ -33,7 +34,6 @@ const About = () => {
             alt="Abhinav Jajoo Avatar"
             className="w-40 h-40 rounded-full border-4 border-accent shadow-lg"
           />
-
           <div className="text-center md:text-left">
             <h2 className="text-3xl font-bold text-accent mb-3">About Me</h2>
             <p className="text-gray-300 text-sm md:text-base max-w-xl">

@@ -1,3 +1,4 @@
+// src/components/Experience.jsx
 import React from "react";
 import { motion } from "framer-motion";
 import { FaBriefcase } from "react-icons/fa";
@@ -5,29 +6,29 @@ import { MdWork } from "react-icons/md";
 
 const Experience = () => {
   return (
-    <section id="experience" className="py-24 px-4 sm:px-6 md:px-8 text-white">
+    <section id="experience" className="py-24 px-6 text-white">
       <div className="max-w-5xl mx-auto">
         <motion.h2
           initial={{ opacity: 0, y: -40 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-4xl font-bold mb-12 text-center text-accent"
+          className="text-4xl font-bold mb-12 text-center"
         >
-          <FaBriefcase className="inline mr-2 text-accent" /> Experience
+          <FaBriefcase className="inline mr-2 text-purple-400" /> Experience
         </motion.h2>
 
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
-          className="bg-white/5 p-6 md:p-8 rounded-2xl border border-white/10 backdrop-blur-md shadow-xl hover:shadow-accent/30 transition"
+          className="bg-black/40 p-6 md:p-8 rounded-2xl border border-white/10 backdrop-blur-md shadow-xl hover:shadow-purple-700/30 transition"
         >
           <div className="flex items-center gap-4 mb-4">
-            <div className="bg-accent text-white p-3 rounded-full">
+            <div className="bg-purple-500 text-white p-3 rounded-full">
               <MdWork className="text-xl" />
             </div>
             <div>
-              <h3 className="text-xl md:text-2xl font-semibold text-accent">
+              <h3 className="text-xl md:text-2xl font-semibold text-purple-300">
                 Business Analyst Intern – FUDR
               </h3>
               <p className="text-sm text-gray-400">May 2024 – July 2024</p>

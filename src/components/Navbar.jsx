@@ -1,4 +1,3 @@
-// src/components/Navbar.jsx
 import React, { useState } from "react";
 import { Link } from "react-scroll";
 import { FiDownload, FiMenu, FiX } from "react-icons/fi";
@@ -12,14 +11,12 @@ const Navbar = () => {
 
   return (
     <nav className="fixed top-0 left-0 w-full z-50 bg-black/30 backdrop-blur-md shadow-md border-b border-white/10">
-      <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center text-white">
-        {/* Logo */}
-        <h1 className="text-2xl font-bold tracking-wide hover:text-cyan-400 transition-colors cursor-pointer">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 py-4 flex justify-between items-center text-white">
+        <h1 className="text-xl sm:text-2xl font-bold tracking-wide hover:text-cyan-400 transition-colors cursor-pointer">
           Abhinav Jajoo
         </h1>
 
-        {/* Desktop Navigation Links */}
-        <ul className="hidden md:flex space-x-6 text-sm font-medium">
+        <ul className="hidden md:flex space-x-4 sm:space-x-6 text-sm sm:text-base font-medium">
           {navItems.map((item) => (
             <li key={item}>
               <Link
@@ -35,7 +32,6 @@ const Navbar = () => {
           ))}
         </ul>
 
-        {/* Mobile Hamburger Icon */}
         <div className="md:hidden flex items-center">
           <button onClick={toggleMenu} className="focus:outline-none">
             {isOpen ? (
@@ -46,7 +42,6 @@ const Navbar = () => {
           </button>
         </div>
 
-        {/* Resume Download Button (hidden on mobile) */}
         <a
           href="/src/assets/Abhinav_Jajoo_Resume.pdf"
           download
@@ -56,9 +51,8 @@ const Navbar = () => {
         </a>
       </div>
 
-      {/* Mobile Menu */}
       {isOpen && (
-        <div className="md:hidden bg-black/90 backdrop-blur-md py-4 px-6">
+        <div className="md:hidden bg-black/90 backdrop-blur-md py-4 px-4 sm:px-6">
           <ul className="space-y-4 text-sm font-medium">
             {navItems.map((item) => (
               <li key={item}>
@@ -74,7 +68,6 @@ const Navbar = () => {
                 </Link>
               </li>
             ))}
-            {/* Resume Download (visible on mobile) */}
             <li>
               <a
                 href="/src/assets/Abhinav_Jajoo_Resume.pdf"

@@ -1,3 +1,4 @@
+// src/components/Hero.jsx
 import React from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-scroll";
@@ -22,7 +23,7 @@ const Hero = () => {
           <a
             href="/src/assets/Abhinav_Jajoo_Resume.pdf"
             download
-            className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-cyan-500 to-purple-600 text-white font-semibold rounded-full shadow-lg hover:scale-105 transition"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-cyan-500 to-purple-600 text-white font-semibold rounded-full shadow-lg hover:scale-105 hover:brightness-110 transition duration-300"
           >
             <FaDownload /> Download Resume
           </a>
@@ -32,7 +33,7 @@ const Hero = () => {
             smooth={true}
             duration={500}
             offset={-60}
-            className="inline-flex items-center gap-2 px-6 py-3 border border-cyan-400 text-cyan-400 rounded-full font-medium hover:bg-cyan-500 hover:text-white transition cursor-pointer"
+            className="inline-flex items-center gap-2 px-6 py-3 border border-cyan-400 text-cyan-400 rounded-full font-medium hover:bg-cyan-500 hover:text-white transition duration-300 cursor-pointer"
           >
             View Projects <FaArrowRight />
           </Link>
