@@ -3,9 +3,10 @@
 @tailwind utilities;
 
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Poppins', 'Inter', sans-serif;
   scroll-behavior: smooth;
   background-color: #000;
+  color: white;
 }
 
 /* Marquee animation */
@@ -19,7 +20,7 @@ body {
 
 /* Input styling */
 .input {
-  @apply w-full p-3 bg-black/60 rounded-xl border border-gray-600 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-cyan-500;
+  @apply w-full p-3 bg-black/60 rounded-xl border border-gray-600 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-accent;
 }
 
 /* Responsive marquee wrapper */
@@ -28,7 +29,7 @@ body {
   white-space: nowrap;
 }
 
-/* Optional: Enforce text wrap on smaller screens */
+/* Text wrap on small screens */
 .text-wrap {
   word-wrap: break-word;
   overflow-wrap: break-word;
