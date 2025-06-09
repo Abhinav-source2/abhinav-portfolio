@@ -38,7 +38,6 @@ const SKILLS = [
   { name: 'Git', icon: git },
   { name: 'Hadoop', icon: hadoop },
   { name: 'HTML5', icon: html5 },
-
   { name: 'JavaScript', icon: js },
   { name: 'Java', icon: java },
   { name: 'Keras', icon: keras },
@@ -48,7 +47,6 @@ const SKILLS = [
   { name: 'Node.js', icon: nodejs },
   { name: 'NumPy', icon: numpy },
   { name: 'Pandas', icon: pandas },
-
   { name: 'PostgreSQL', icon: postgresql },
   { name: 'Power BI', icon: powerbi },
   { name: 'PySpark', icon: pyspark },
@@ -69,8 +67,8 @@ const Skills = () => {
   const skillRows = chunkArray(SKILLS, 9);
 
   return (
-    <section id="skills" className="py-16 bg-transparent">
-      <h2 className="text-3xl font-bold text-center text-white mb-8">
+    <section id="skills" className="py-16 bg-transparent px-4 sm:px-6 md:px-8">
+      <h2 className="text-3xl font-bold text-center text-accent mb-8">
         Tools & Technologies
       </h2>
 
@@ -86,9 +84,7 @@ const Skills = () => {
             {row.map((skill) => (
               <div
                 key={skill.name}
-                className="flex items-center bg-gray-800/30 hover:bg-gray-700/50
-                  text-white px-4 py-2 m-2 rounded-full transition
-                  transform hover:scale-105"
+                className="flex items-center bg-secondary/30 hover:bg-secondary/50 text-white px-4 py-2 m-2 rounded-full transition transform hover:scale-105 shadow border border-white/10"
               >
                 <img
                   src={skill.icon}
