@@ -1,10 +1,14 @@
-// src/components/Contact.jsx
 import React, { useState } from 'react';
 import { FiMail, FiMapPin, FiGithub, FiLinkedin } from 'react-icons/fi';
+import toast from 'react-hot-toast'; // ✅ Toast import
 
 const Contact = () => {
-  const [formData, setFormData] = useState({ name: '', email: '', subject: '', message: '' });
-  const [status, setStatus] = useState('');
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: ''
+  });
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -12,7 +16,7 @@ const Contact = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setStatus('Sending...');
+    const loadingToast = toast.loading('Sending your message...');
 
     try {
       const response = await fetch("https://formspree.io/f/xeokookj", {
@@ -24,21 +28,23 @@ const Contact = () => {
         body: JSON.stringify(formData),
       });
 
+      toast.dismiss(loadingToast);
+
       if (response.ok) {
-        setStatus('✅ Message sent successfully!');
+        toast.success('✅ Message sent successfully!');
         setFormData({ name: '', email: '', subject: '', message: '' });
       } else {
-        setStatus('❌ Something went wrong. Please try again.');
+        toast.error('❌ Something went wrong. Please try again.');
       }
     } catch (err) {
-      setStatus('⚠️ Error sending message. Please try later.');
+      toast.dismiss(loadingToast);
+      toast.error('⚠️ Error sending message. Please try again later.');
     }
   };
 
   return (
     <section id="contact" className="py-24 px-4 sm:px-6 md:px-8 text-white">
       <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-start">
-
         {/* Left Side */}
         <div className="space-y-6">
           <p className="inline-block px-4 py-1 text-sm rounded-full bg-gradient-to-r from-cyan-500 to-blue-500 text-white">
@@ -103,9 +109,7 @@ const Contact = () => {
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="flex flex-col sm:flex-row gap-4">
               <div className="w-full sm:w-1/2">
-                <label className="text-sm block mb-1" htmlFor="name">
-                  Your name
-                </label>
+                <label className="text-sm block mb-1" htmlFor="name">Your name</label>
                 <input
                   type="text"
                   id="name"
@@ -118,9 +122,7 @@ const Contact = () => {
                 />
               </div>
               <div className="w-full sm:w-1/2">
-                <label className="text-sm block mb-1" htmlFor="email">
-                  Email address
-                </label>
+                <label className="text-sm block mb-1" htmlFor="email">Email address</label>
                 <input
                   type="email"
                   id="email"
@@ -135,9 +137,7 @@ const Contact = () => {
             </div>
 
             <div>
-              <label className="text-sm block mb-1" htmlFor="subject">
-                Subject
-              </label>
+              <label className="text-sm block mb-1" htmlFor="subject">Subject</label>
               <input
                 type="text"
                 id="subject"
@@ -151,9 +151,7 @@ const Contact = () => {
             </div>
 
             <div>
-              <label className="text-sm block mb-1" htmlFor="message">
-                Message
-              </label>
+              <label className="text-sm block mb-1" htmlFor="message">Message</label>
               <textarea
                 id="message"
                 name="message"
@@ -172,7 +170,6 @@ const Contact = () => {
             >
               ✈️ Send Message
             </button>
-            {status && <p className="text-sm text-center text-cyan-400 mt-3">{status}</p>}
           </form>
         </div>
       </div>
