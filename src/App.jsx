@@ -1,5 +1,5 @@
-// src/App.jsx
 import React, { useState, useEffect } from 'react';
+import { Toaster } from 'react-hot-toast'; // ✅ Toast import
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -11,7 +11,6 @@ import FixedBackground from "./components/FixedBackground";
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(() => {
-    // Check user preference or system theme
     if (localStorage.getItem('theme')) {
       return localStorage.getItem('theme') === 'dark';
     }
@@ -32,6 +31,7 @@ function App() {
   return (
     <div className="relative w-full h-full">
       <FixedBackground />
+      <Toaster position="top-center" reverseOrder={false} /> {/* ✅ Toast ready */}
       <div className="relative z-10">
         <Navbar toggleTheme={() => setIsDarkMode(!isDarkMode)} isDarkMode={isDarkMode} />
         <Hero />
