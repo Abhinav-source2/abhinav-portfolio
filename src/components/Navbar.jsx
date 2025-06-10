@@ -24,9 +24,11 @@ const Navbar = ({ toggleTheme, isDarkMode }) => {
               <Link
                 to={item.toLowerCase()}
                 smooth={true}
-                duration={500}
+                spy={true}
                 offset={-60}
-                className="cursor-pointer hover:text-cyan-500 dark:hover:text-cyan-300 transition-colors hover:scale-105 active:scale-95 duration-300"
+                duration={500}
+                activeClass="text-cyan-500 dark:text-cyan-300 underline underline-offset-4"
+                className="cursor-pointer transition-colors hover:text-cyan-500 dark:hover:text-cyan-300 hover:scale-105 active:scale-95 duration-300"
               >
                 {item}
               </Link>
@@ -84,9 +86,11 @@ const Navbar = ({ toggleTheme, isDarkMode }) => {
                 <Link
                   to={item.toLowerCase()}
                   smooth={true}
-                  duration={500}
+                  spy={true}
                   offset={-60}
-                  className="cursor-pointer block hover:text-cyan-500 dark:hover:text-cyan-300 transition-colors hover:scale-105 active:scale-95 duration-300"
+                  duration={500}
+                  activeClass="text-cyan-500 dark:text-cyan-300 underline underline-offset-4"
+                  className="cursor-pointer block hover:text-cyan-500 dark:hover:text-cyan-300 hover:scale-105 active:scale-95 duration-300"
                   onClick={closeMenu}
                 >
                   {item}
