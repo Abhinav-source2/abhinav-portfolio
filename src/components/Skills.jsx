@@ -1,5 +1,6 @@
 import React from 'react';
 import Marquee from 'react-fast-marquee';
+import { motion } from 'framer-motion';
 import airflow from '../assets/airflow.svg';
 import aws from '../assets/aws-svgrepo-com.svg';
 import C from '../assets/C.svg';
@@ -67,10 +68,15 @@ const Skills = () => {
   const skillRows = chunkArray(SKILLS, 9);
 
   return (
-    <section id="skills" className="py-16 bg-transparent px-4 sm:px-6 md:px-8">
-      <h2 className="text-3xl font-bold text-center text-accent mb-8">
+    <section id="skills" className="py-20 px-4 sm:px-6 md:px-8 text-white">
+      <motion.h2
+        initial={{ opacity: 0, y: -20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        className="text-3xl font-bold text-center text-cyan-300 mb-10"
+      >
         Tools & Technologies
-      </h2>
+      </motion.h2>
 
       <div className="space-y-6">
         {skillRows.map((row, index) => (
@@ -82,17 +88,21 @@ const Skills = () => {
             direction={index % 2 === 1 ? 'right' : 'left'}
           >
             {row.map((skill) => (
-              <div
+              <motion.div
                 key={skill.name}
-                className="flex items-center bg-secondary/30 hover:bg-secondary/50 text-white px-4 py-2 m-2 rounded-full transition transform hover:scale-105 shadow border border-white/10"
+                whileHover={{ scale: 1.08, boxShadow: '0 0 15px #22d3ee55' }}
+                whileTap={{ scale: 0.95 }}
+                className="flex items-center bg-white/5 border border-cyan-400/10 px-4 py-2 m-2 rounded-full shadow-md backdrop-blur-md transition duration-300"
               >
-                <img
+                <motion.img
                   src={skill.icon}
                   alt={skill.name}
                   className="w-6 h-6 mr-2 object-contain"
+                  whileHover={{ rotate: 8, scale: 1.15 }}
+                  transition={{ type: 'spring', stiffness: 300 }}
                 />
-                <span className="font-medium">{skill.name}</span>
-              </div>
+                <span className="font-medium text-gray-100">{skill.name}</span>
+              </motion.div>
             ))}
           </Marquee>
         ))}
