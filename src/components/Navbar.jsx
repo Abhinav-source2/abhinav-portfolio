@@ -49,7 +49,7 @@ const Navbar = ({ toggleTheme, isDarkMode }) => {
           {/* Resume Button */}
           <li>
             <a
-              href="/src/assets/Abhinav_Jajoo_Resume.pdf"
+              href="/Abhinav_Jajoo_Resume.pdf"
               download
               className="ml-4 inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-cyan-500 to-purple-600 text-white text-sm rounded-full font-medium hover:scale-105 active:scale-95 transition-transform duration-300"
             >
@@ -99,7 +99,7 @@ const Navbar = ({ toggleTheme, isDarkMode }) => {
             ))}
             <li>
               <a
-                href="/src/assets/Abhinav_Jajoo_Resume.pdf"
+                href="/Abhinav_Jajoo_Resume.pdf"
                 download
                 className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-cyan-500 to-purple-600 text-white text-sm rounded-full font-medium hover:scale-105 active:scale-95 transition-transform duration-300"
               >

@@ -1,4 +1,3 @@
-// src/components/Hero.jsx
 import React from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-scroll";
@@ -54,7 +53,7 @@ const Hero = () => {
 
         <div className="mt-6 flex flex-col md:flex-row items-center justify-center gap-4 flex-wrap">
           <a
-            href="/src/assets/Abhinav_Jajoo_Resume.pdf"
+            href="/Abhinav_Jajoo_Resume.pdf"
             download
             className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-cyan-500 to-purple-600 text-white font-semibold rounded-full shadow-lg hover:scale-105 active:scale-95 transition duration-300"
           >
