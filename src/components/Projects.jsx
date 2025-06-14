@@ -18,7 +18,7 @@ const projects = [
     description: "Built a CNN using EfficientNet to classify tumors as benign or malignant with Grad-CAM visualization for interpretability.",
     tech: ["TensorFlow", "Keras", "CNN"],
     image: BreastCancerImage,
-    github: "https://github.com/Abhinav-source2/Breast-Cancer-Detection.git",
+    github: "https://github.com/Abhinav-source2/Breast-Cancer-Prediction.git",
   },
   {
     title: "Real-time Sentiment Analysis Pipeline",
