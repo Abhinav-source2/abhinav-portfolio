@@ -1,6 +1,8 @@
 import React from 'react';
 import Marquee from 'react-fast-marquee';
 import { motion } from 'framer-motion';
+
+// Imports
 import airflow from '../assets/airflow.svg';
 import aws from '../assets/aws-svgrepo-com.svg';
 import C from '../assets/C.svg';
@@ -29,6 +31,7 @@ import tensorflow from '../assets/tenserflow.svg';
 import threejs from '../assets/threejs.svg';
 import vite from '../assets/vite.svg';
 
+// Data
 const SKILLS = [
   { name: 'Airflow', icon: airflow },
   { name: 'AWS', icon: aws },
@@ -59,6 +62,7 @@ const SKILLS = [
   { name: 'Vite', icon: vite },
 ];
 
+// Utility: Break into 3 rows
 const chunkArray = (arr, chunkSize) =>
   Array.from({ length: Math.ceil(arr.length / chunkSize) }, (_, i) =>
     arr.slice(i * chunkSize, i * chunkSize + chunkSize)
@@ -68,40 +72,40 @@ const Skills = () => {
   const skillRows = chunkArray(SKILLS, 9);
 
   return (
-    <section id="skills" className="py-20 px-4 sm:px-6 md:px-8 text-white">
+    <section id="skills" className="py-24 px-4 sm:px-6 md:px-8 bg-transparent text-white relative z-10">
       <motion.h2
         initial={{ opacity: 0, y: -20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="text-3xl font-bold text-center text-cyan-300 mb-10"
+        className="text-4xl sm:text-5xl font-bold text-center mb-14 bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 bg-clip-text text-transparent"
       >
-        Tools & Technologies
+        🛠️ Tools & Technologies
       </motion.h2>
 
-      <div className="space-y-6">
+      <div className="space-y-8">
         {skillRows.map((row, index) => (
           <Marquee
             key={index}
             gradient={false}
             speed={40}
-            pauseOnHover={true}
+            pauseOnHover
             direction={index % 2 === 1 ? 'right' : 'left'}
           >
             {row.map((skill) => (
               <motion.div
                 key={skill.name}
-                whileHover={{ scale: 1.08, boxShadow: '0 0 15px #22d3ee55' }}
-                whileTap={{ scale: 0.95 }}
-                className="flex items-center bg-white/5 border border-cyan-400/10 px-4 py-2 m-2 rounded-full shadow-md backdrop-blur-md transition duration-300"
+                whileHover={{ scale: 1.1 }}
+                transition={{ type: 'spring', stiffness: 300 }}
+                className="flex items-center gap-3 bg-white/10 border border-white/10 px-5 py-3 m-3 rounded-full shadow-md backdrop-blur-md hover:shadow-cyan-400/20 transition-all duration-300"
               >
-                <motion.img
+                <img
                   src={skill.icon}
                   alt={skill.name}
-                  className="w-6 h-6 mr-2 object-contain"
-                  whileHover={{ rotate: 8, scale: 1.15 }}
-                  transition={{ type: 'spring', stiffness: 300 }}
+                  className="w-7 h-7 sm:w-8 sm:h-8 object-contain"
                 />
-                <span className="font-medium text-gray-100">{skill.name}</span>
+                <span className="font-medium text-white text-sm sm:text-base">
+                  {skill.name}
+                </span>
               </motion.div>
             ))}
           </Marquee>

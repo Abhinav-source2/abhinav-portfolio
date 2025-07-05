@@ -5,8 +5,8 @@ import { MdWork } from "react-icons/md";
 
 const experienceList = [
   {
-    title: "Business Analyst Intern – FUDR",
-    date: "May 2024 – July 2024",
+    title: "Business & Data Analyst Intern – FUDR",
+    date: "May 2024 – July 2024 | Onsite",
     icon: <MdWork className="text-xl" />,
     points: [
       "Increased customer reach by 20% through data-backed engagement strategies and user research.",
@@ -15,9 +15,35 @@ const experienceList = [
       "Designed a live data-driven dashboard using automation pipelines to visualize KPIs and insights.",
       "Collaborated cross-functionally with devs and ops to ship features rapidly in Agile sprints.",
     ],
+    tools: ["Python", "SQL", "Power BI", "Excel", "Web Scraping"],
   },
-  // Add more roles here if needed
 ];
+
+const highlightKeywords = (text) => {
+  const keywords = [
+    "20%",
+    "600+",
+    "500",
+    "CRM app",
+    "dashboard",
+    "automation",
+    "Python",
+    "SQL",
+    "Power BI",
+    "Excel",
+  ];
+  const regex = new RegExp(`\\b(${keywords.join("|")})\\b`, "gi");
+
+  return text.split(regex).map((part, i) =>
+    keywords.includes(part) ? (
+      <span key={i} className="text-white font-semibold">
+        {part}
+      </span>
+    ) : (
+      part
+    )
+  );
+};
 
 const Experience = () => {
   return (
@@ -27,7 +53,7 @@ const Experience = () => {
           initial={{ opacity: 0, y: -40 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-4xl font-bold mb-16 text-center text-cyan-300"
+          className="text-4xl font-bold mb-16 text-center bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent"
         >
           <FaBriefcase className="inline mr-2 text-cyan-400" /> Experience
         </motion.h2>
@@ -46,7 +72,7 @@ const Experience = () => {
 
               <div className="bg-white/5 backdrop-blur-lg border border-cyan-400/20 rounded-2xl p-6 md:p-8 shadow-lg transition duration-300 group-hover:border-cyan-400 group-hover:shadow-cyan-400/30 hover:scale-[1.02] active:scale-95">
                 <div className="flex items-center gap-4 mb-4">
-                  <div className="bg-cyan-500 text-white p-3 rounded-full">
+                  <div className="bg-cyan-500 text-white p-3 rounded-full shadow-md">
                     {exp.icon}
                   </div>
                   <div>
@@ -56,15 +82,25 @@ const Experience = () => {
                     <p className="text-sm text-gray-400">{exp.date}</p>
                   </div>
                 </div>
+
+                {/* Role points */}
                 <ul className="list-disc list-inside text-gray-300 space-y-3 text-sm md:text-base pl-2">
                   {exp.points.map((point, i) => (
-                    <li key={i}>
-                      {point.replace(/(\d+%|\d+\+|dashboard)/gi, (match) => (
-                        <span className="text-white font-medium">{match}</span>
-                      ))}
-                    </li>
+                    <li key={i}>{highlightKeywords(point)}</li>
                   ))}
                 </ul>
+
+                {/* Tools used */}
+                <div className="mt-5 flex flex-wrap gap-3">
+                  {exp.tools.map((tool, i) => (
+                    <span
+                      key={i}
+                      className="bg-cyan-600/10 text-cyan-200 text-xs px-3 py-1 rounded-full border border-cyan-500/40"
+                    >
+                      {tool}
+                    </span>
+                  ))}
+                </div>
               </div>
             </motion.div>
           ))}

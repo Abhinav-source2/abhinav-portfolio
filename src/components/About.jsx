@@ -19,24 +19,24 @@ const stats = [
     desc: "Keen observer of global affairs and macro trends.",
   },
   {
-    title: "AI & Data",
+    title: "Data Engineering",
     level: "95%",
     icon: <FaRobot className="text-cyan-400 text-3xl" />,
-    desc: "Skilled in ML, NLP, and real-world AI applications.",
+    desc: "Building pipelines, managing data workflows, and deploying AI systems.",
   },
   {
-    title: "Economy",
+    title: "Strategic Thinking",
     level: "88%",
     icon: <FaChartLine className="text-cyan-400 text-3xl" />,
-    desc: "Passionate about market dynamics and strategic insights.",
+    desc: "Driven by insights and outcomes that matter to the business.",
   },
 ];
 
 const achievements = [
-  "Prompt Engineer 🧠",
-  "Data Diver ⛏️",
-  "AI Tinkerer 🤖",
-  "Global Strategist 🌐",
+  "Real-Time Pipeline Builder ⚙️",
+  "AI-Powered Insight Crafter 🤖",
+  "EfficientNet Practitioner 🔬",
+  "Prompt Engineer 💡",
 ];
 
 const About = () => {
@@ -63,9 +63,11 @@ const About = () => {
               About Me
             </h2>
             <p className="text-gray-300 text-sm md:text-base leading-relaxed">
-              I’m <span className="text-white font-semibold">Abhinav Jajoo</span> — a data-driven developer, business analyst, and AI enthusiast with a sharp eye for strategy. I love building tools that bridge technology with real-world insight.
+              I’m <span className="text-white font-semibold">Abhinav Jajoo</span> — a data engineer with a strong foundation in AI and analytics, passionate about turning raw data into scalable, intelligent systems.
               <br /><br />
-              Whether it's designing a machine learning pipeline, analyzing global trends, or crafting full-stack apps — I approach every project with curiosity, creativity, and commitment.
+              I specialize in building full-stack data solutions — from real-time data pipelines and ETL workflows to ML model deployment and analytics dashboards. My projects span across areas like sentiment analysis pipelines, EfficientNet-powered diagnostics, and GenAI prototyping — all driven by curiosity, execution, and problem-solving.
+              <br /><br />
+              My goal is to join a forward-thinking team where I can lead the design and optimization of data infrastructure, support machine learning initiatives, and contribute as a <span className="text-white font-semibold">Data Engineer</span> or <span className="text-white font-semibold">Data Scientist</span> — while staying rooted in practical business impact.
             </p>
           </div>
         </motion.div>
