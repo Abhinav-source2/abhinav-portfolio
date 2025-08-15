@@ -5,15 +5,14 @@ import { MdWork } from "react-icons/md";
 
 const experienceList = [
   {
-    title: "Business & Data Analyst Intern – FUDR",
+    title: "Data Analyst Intern – FUDR",
     date: "May 2024 – July 2024 | Onsite",
     icon: <MdWork className="text-xl" />,
-    points: [
-      "Increased customer reach by 20% through data-backed engagement strategies and user research.",
-      "Scraped and structured a dataset of 600+ brands and 500 clients for internal analysis.",
-      "Developed a custom CRM app to centralize client interactions, boosting response speed and retention.",
-      "Designed a live data-driven dashboard using automation pipelines to visualize KPIs and insights.",
-      "Collaborated cross-functionally with devs and ops to ship features rapidly in Agile sprints.",
+     points: [
+      "Designed and wrote complex SQL queries to extract, clean, and transform customer data across 600+ brands, supporting real-time dashboards and internal analytics workflows.",
+      "Refactored inefficient queries by removing redundant joins and adding indexes, reducing query execution time by 40% and improving backend performance.",
+      "Built reusable SQL views and scheduled Excel integrations for Power BI reports, cutting report generation time by 60% and enhancing decision speed across departments.",
+      "Scraped and structured data from 500+ client touchpoints using Postman, Selenium, and BeautifulSoup, automating insight generation for marketing and operations.",
     ],
     tools: ["Python", "SQL", "Power BI", "Excel", "Web Scraping"],
   },
