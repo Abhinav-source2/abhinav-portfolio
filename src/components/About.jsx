@@ -1,133 +1,123 @@
 // src/components/About.jsx
 import React from "react";
 import { motion } from "framer-motion";
-import { FaBrain, FaGlobeAsia, FaRobot, FaChartLine } from "react-icons/fa";
-import { GiAchievement } from "react-icons/gi";
+import { FaServer, FaCloud, FaChartLine, FaCogs } from "react-icons/fa";
+import { MdPsychology } from "react-icons/md";
 import ProfileImage from "/src/assets/abhinav_avatar.jpg";
 
-const stats = [
-  {
-    title: "Curiosity",
-    level: "92%",
-    icon: <FaBrain className="text-cyan-400 text-3xl" />,
-    desc: "Always exploring new ideas, tools, and technologies.",
-  },
-  {
-    title: "Geopolitics",
-    level: "85%",
-    icon: <FaGlobeAsia className="text-cyan-400 text-3xl" />,
-    desc: "Keen observer of global affairs and macro trends.",
-  },
+const expertise = [
   {
     title: "Data Engineering",
-    level: "95%",
-    icon: <FaRobot className="text-cyan-400 text-3xl" />,
-    desc: "Building pipelines, managing data workflows, and deploying AI systems.",
+    desc: "Building real-time and batch pipelines, orchestrating workflows, and designing reliable data architectures.",
+    icon: <FaServer className="text-cyan-400 text-3xl" />,
   },
   {
-    title: "Strategic Thinking",
-    level: "88%",
-    icon: <FaChartLine className="text-cyan-400 text-3xl" />,
-    desc: "Driven by insights and outcomes that matter to the business.",
+    title: "Cloud & Automation",
+    desc: "Deploying serverless and containerized systems on AWS with automated analytics and cost-efficient scaling.",
+    icon: <FaCloud className="text-cyan-400 text-3xl" />,
   },
-];
-
-const achievements = [
-  "Real-Time Pipeline Builder ⚙️",
-  "AI-Powered Insight Crafter 🤖",
-  "EfficientNet Practitioner 🔬",
-  "Prompt Engineer 💡",
+  {
+    title: "ML-Driven Analytics",
+    desc: "Integrating forecasting, NLP, and anomaly-detection models into production-grade ETL/ELT systems.",
+    icon: <FaChartLine className="text-cyan-400 text-3xl" />,
+  },
+  {
+    title: "Systems Thinking",
+    desc: "Approaching problems with clarity—prioritizing scalability, reliability, monitoring, and long-term maintainability.",
+    icon: <MdPsychology className="text-cyan-400 text-3xl" />,
+  },
 ];
 
 const About = () => {
   return (
     <section
       id="about"
-      className="min-h-screen px-4 sm:px-6 md:px-8 py-24 bg-transparent"
+      className="min-h-screen px-4 sm:px-6 md:px-8 py-28 bg-transparent"
     >
       <div className="max-w-6xl mx-auto">
-        {/* Hero Intro */}
+        
+        {/* Header Block */}
         <motion.div
-          initial={{ opacity: 0, y: -30 }}
+          initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
-          className="flex flex-col md:flex-row items-center justify-center gap-8 mb-16"
+          className="flex flex-col md:flex-row items-center justify-center gap-8 mb-20"
         >
           <img
             src={ProfileImage}
-            alt="Abhinav Jajoo Avatar"
-            className="w-40 h-40 rounded-full border-4 border-cyan-400 shadow-xl"
+            alt="Abhinav Jajoo"
+            className="w-40 h-40 rounded-full border-2 border-cyan-400 shadow-xl object-cover"
           />
+
           <div className="text-center md:text-left max-w-2xl">
             <h2 className="text-3xl md:text-4xl font-bold text-cyan-400 mb-4">
               About Me
             </h2>
+
             <p className="text-gray-300 text-sm md:text-base leading-relaxed">
-              I’m <span className="text-white font-semibold">Abhinav Jajoo</span> — a data engineer with a strong foundation in AI and analytics, passionate about turning raw data into scalable, intelligent systems.
+              Hi, I'm <span className="text-white font-semibold">Abhinav</span> —
+              a data engineer who enjoys building reliable pipelines, scalable cloud 
+              architectures, and ML-powered analytics systems. I work across ingestion, 
+              orchestration, modeling, and automation—turning messy datasets into clean, 
+              structured, insight-ready systems.
               <br /><br />
-              I specialize in building full-stack data solutions — from real-time data pipelines and ETL workflows to ML model deployment and analytics dashboards. My projects span across areas like sentiment analysis pipelines, EfficientNet-powered diagnostics, and GenAI prototyping — all driven by curiosity, execution, and problem-solving.
+              My experience ranges from real-time streaming pipelines using{" "}
+              <span className="text-white font-semibold">Kafka & Airflow</span>, to 
+              cloud-native analytics infrastructures leveraging{" "}
+              <span className="text-white font-semibold">AWS Glue, Athena, and S3</span>. 
+              I love designing systems that don’t just function—but scale, monitor themselves, 
+              and provide meaningful business value.
               <br /><br />
-              My goal is to join a forward-thinking team where I can lead the design and optimization of data infrastructure, support machine learning initiatives, and contribute as a <span className="text-white font-semibold">Data Engineer</span> or <span className="text-white font-semibold">Data Scientist</span> — while staying rooted in practical business impact.
+              Outside engineering, I stay curious about{" "}
+              <span className="text-white font-semibold">geopolitics, psychology, and system design</span>. 
+              These help me think more clearly about how people use data and how intelligent systems should behave.
             </p>
           </div>
         </motion.div>
 
-        {/* Skills & Interests Stats */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-          {stats.map((stat, i) => (
+        {/* Expertise Cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
+          {expertise.map((item, i) => (
             <motion.div
               key={i}
-              className="group bg-white/5 p-6 rounded-xl shadow-lg hover:shadow-xl backdrop-blur-md cursor-pointer border border-white/10 transition duration-300 hover:scale-[1.03]"
+              className="group bg-white/5 p-6 rounded-xl shadow-lg backdrop-blur-md border border-white/10 transition duration-300 hover:scale-[1.03] hover:shadow-cyan-500/10 cursor-default"
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: i * 0.2, duration: 0.6 }}
+              transition={{ delay: i * 0.15, duration: 0.6 }}
               viewport={{ once: true }}
             >
-              <div className="mb-4">{stat.icon}</div>
-              <h3 className="text-xl font-semibold mb-1 text-white group-hover:text-cyan-300 transition">
-                {stat.title}
+              <div className="mb-4">{item.icon}</div>
+              <h3 className="text-xl font-semibold mb-2 text-white group-hover:text-cyan-300 transition">
+                {item.title}
               </h3>
-              <p className="text-sm text-gray-300 mb-2">{stat.level}</p>
-              <p className="text-sm text-gray-400">{stat.desc}</p>
+              <p className="text-sm text-gray-400">{item.desc}</p>
             </motion.div>
           ))}
         </div>
 
-        {/* Achievements */}
-        <motion.h3
-          className="text-2xl font-bold text-center mb-6 text-cyan-400"
+        {/* Achievements Section */}
+        <motion.div
+          className="text-center mb-14"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 1 }}
         >
-          🏆 Achievements Unlocked
-        </motion.h3>
-
-        <div className="flex flex-wrap justify-center gap-4 mb-12">
-          {achievements.map((badge, i) => (
-            <motion.span
-              key={i}
-              className="bg-cyan-500/10 border border-cyan-400/30 text-cyan-300 px-4 py-2 rounded-full text-sm shadow hover:shadow-md backdrop-blur"
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ delay: i * 0.2 }}
-              viewport={{ once: true }}
-            >
-              <GiAchievement className="inline mr-2 text-cyan-300" />
-              {badge}
-            </motion.span>
-          ))}
-        </div>
+          <h3 className="text-2xl font-bold text-cyan-400 mb-4">Highlights</h3>
+          <p className="text-gray-400 text-base max-w-2xl mx-auto">
+            Built real-time ingestion systems, automated BI pipelines, deployed ML analytics, 
+            and optimized SQL workflows powering insights for 600+ brands. Always improving, always building.
+          </p>
+        </motion.div>
 
         {/* Closing Line */}
-        <motion.div
-          className="text-center text-gray-400 text-sm"
+        <motion.p
+          className="text-center text-gray-500 text-sm italic"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          transition={{ delay: 1.2 }}
+          transition={{ delay: 0.3, duration: 1 }}
         >
-          More to come... Stay tuned, something is always cooking! 🚀
-        </motion.div>
+          More to come — something is always cooking. 🚀
+        </motion.p>
       </div>
     </section>
   );
