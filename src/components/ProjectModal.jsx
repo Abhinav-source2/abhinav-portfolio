@@ -1,57 +1,63 @@
 // src/components/ProjectModal.jsx
 import React from "react";
 import { motion } from "framer-motion";
-import { FaTimes } from "react-icons/fa";
+import { FaTimes, FaGithub } from "react-icons/fa";
 
 const ProjectModal = ({ project, onClose }) => {
   if (!project) return null;
 
   return (
     <motion.div
-      className="fixed inset-0 bg-black/70 backdrop-blur-md flex items-center justify-center p-6 z-50"
+      className="fixed inset-0 bg-black/70 backdrop-blur-xl flex items-center justify-center p-6 z-50"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.3 }}
     >
       <motion.div
-        className="bg-white/10 border border-white/20 rounded-2xl max-w-3xl p-8 relative shadow-2xl"
-        initial={{ scale: 0.8, opacity: 0 }}
+        className="bg-white/10 border border-white/20 rounded-2xl p-8 max-w-3xl w-full relative shadow-2xl overflow-y-auto max-h-[85vh]"
+        initial={{ scale: 0.85, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ duration: 0.4 }}
       >
+        {/* Close Button */}
         <button
-          className="absolute top-4 right-4 text-gray-300 hover:text-white"
           onClick={onClose}
+          className="absolute top-4 right-4 text-gray-300 hover:text-white"
         >
-          <FaTimes className="text-xl" />
+          <FaTimes size={22} />
         </button>
 
-        <h2 className="text-2xl font-bold text-white mb-4">
+        <h2 className="text-3xl font-bold text-white mb-4">
           {project.title}
         </h2>
 
-        <p className="text-gray-300 mb-4">{project.descriptionLong}</p>
+        <p className="text-gray-300 mb-6">{project.descriptionLong}</p>
 
         {/* Architecture Diagram */}
-        <img
-          src={project.archDiagram}
-          alt="Architecture"
-          className="w-full rounded-lg shadow mb-6"
-        />
+        {project.archDiagram && (
+          <img
+            src={project.archDiagram}
+            alt="Architecture Diagram"
+            className="rounded-xl shadow-lg mb-6"
+          />
+        )}
 
-        <h3 className="text-lg font-semibold text-cyan-400 mb-2">Key Steps</h3>
-        <ul className="list-disc ml-6 text-gray-300 mb-6">
+        {/* Steps */}
+        <h3 className="text-xl font-semibold text-cyan-400 mb-3">Pipeline Breakdown</h3>
+        <ul className="list-disc ml-6 text-gray-300 space-y-2 mb-6">
           {project.steps.map((step, idx) => (
-            <li key={idx} className="mb-2">{step}</li>
+            <li key={idx}>{step}</li>
           ))}
         </ul>
 
+        {/* Github Link */}
         <a
           href={project.github}
           target="_blank"
-          className="text-cyan-300 underline hover:text-cyan-200"
+          className="inline-flex items-center gap-2 bg-cyan-600 hover:bg-cyan-700 text-white px-5 py-2 rounded-full transition"
         >
-          View GitHub Repo →
+          <FaGithub />
+          View Code
         </a>
       </motion.div>
     </motion.div>
